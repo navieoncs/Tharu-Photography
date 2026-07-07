@@ -53,7 +53,7 @@ export default function About() {
           {/* Portrait Image frame */}
           <div className="relative overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-xl shadow-slate-100/50 aspect-[4/5]">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=850"
+              src="/images/tharu.jpg"
               alt="Tharu Portrait"
               className="h-full w-full object-cover transition duration-700 hover:scale-[1.02]"
             />

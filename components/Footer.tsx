@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -25,11 +25,20 @@ export default function Footer() {
                 <Facebook className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@tharu_photograph?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-white p-2 text-muted shadow-sm transition hover:bg-primary hover:text-white"
-                aria-label="Instagram"
+                aria-label="TikTok"
               >
-                <Instagram className="h-4 w-4" />
+                <svg
+                  className="h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
+                </svg>
               </a>
             </div>
           </div>
@@ -59,11 +68,11 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-muted">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-slate-400" />
-                <a href="tel:+94771234567" className="transition hover:text-primary">+94 77 123 4567</a>
+                <a href="tel:+94771234567" className="transition hover:text-primary">+94 71 532 7267</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-slate-400" />
-                <a href="mailto:hello@tharuphotography.com" className="transition hover:text-primary">hello@tharuphotography.com</a>
+                <a href="mailto:o.k.dtharushalakshan@gmail.com" className="transition hover:text-primary">o.k.dtharushalakshan@gmail.com</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-slate-400 mt-0.5" />

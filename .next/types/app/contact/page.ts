@@ -1,4 +1,4 @@
-// File: C:\Users\navid\Downloads\Tharu Photography too\app\contact\page.tsx
+// File: C:\Users\stunt\Downloads\GitHub Clones\Tharu-Photography\app\contact\page.tsx
 import * as entry from '../../../../app/contact/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

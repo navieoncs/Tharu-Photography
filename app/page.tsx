@@ -4,22 +4,22 @@ import { ArrowRight, Star, Heart, Camera, Calendar, Award } from 'lucide-react';
 export default function Home() {
   const featuredWorks = [
     {
-      title: 'Aurelia & James',
+      title: 'Golden Union',
       category: 'Wedding & Elopement',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
-      description: 'An intimate sunset exchange of vows in the coastal hills.'
+      image: '/images/wedding2.jpg',
+      description: 'Vows shared as the sky melted into hues of amber and rose.'
     },
     {
-      title: 'Serenade of Light',
+      title: 'Melody in Motion',
       category: 'Editorial Portrait',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800',
-      description: 'Exploring geometry, soft shadows, and classical form.'
+      image: '/images/portrait1.jpg',
+      description: 'Soft forest light and graceful violin melodies in perfect harmony.'
     },
     {
-      title: 'Whisper in the Forest',
-      category: 'Pre-shoot / Couples',
-      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800',
-      description: 'A quiet morning stroll captured through light-leaks.'
+      title: 'Golden Meadow',
+      category: 'Editorial Portrait',
+      image: '/images/portrait2.jpg',
+      description: 'Radiant light, flowing colors, and a carefree moment among the tall grass.'
     }
   ];
 
@@ -76,14 +76,14 @@ export default function Home() {
               <div className="space-y-4 lg:space-y-6">
                 <div className="overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600"
+                    src="/images/portrait3.jpg"
                     alt="Editorial Portrait"
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600"
+                    src="/images/wedding1.jpg"
                     alt="Wedding details"
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
@@ -92,14 +92,14 @@ export default function Home() {
               <div className="space-y-4 pt-8 lg:space-y-6 lg:pt-12">
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600"
+                    src="/images/birthday2.jpg"
                     alt="Lifestyle portraiture"
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
                 <div className="overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1517530094915-500495b15ade?auto=format&fit=crop&q=80&w=600"
+                    src="/images/portrait4.jpg"
                     alt="Outdoor couple portrait"
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
@@ -163,7 +163,7 @@ export default function Home() {
               href="/portfolio"
               className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted"
             >
-              View All Portfolios <ArrowRight className="h-4 w-4" />
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 

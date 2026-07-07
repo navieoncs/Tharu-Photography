@@ -6,7 +6,7 @@ import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 interface Photo {
   id: number;
   title: string;
-  category: 'Weddings' | 'Portraits' | 'Events' | 'Fine Art';
+  category: string;
   image: string;
   description: string;
 }
@@ -14,117 +14,150 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: 1,
-    title: 'Aurelia & James',
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200',
-    description: 'An intimate sunset exchange of vows in the coastal hills.'
+    title: 'Birthday',
+    category: 'Portfolio',
+    image: '/images/birthday1.jpg',
+    description: ''
   },
   {
     id: 2,
-    title: 'Serenade of Light',
-    category: 'Portraits',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1200',
-    description: 'Exploring geometry, soft shadows, and classical form.'
+    title: 'Birthday',
+    category: 'Portfolio',
+    image: '/images/birthday2.jpg',
+    description: ''
   },
   {
     id: 3,
-    title: 'Aesthetic Rings',
-    category: 'Fine Art',
-    image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=1200',
-    description: 'Still life fine art capture of heirloom wedding bands.'
+    title: 'Birthday',
+    category: 'Portfolio',
+    image: '/images/birthday3.jpg',
+    description: ''
   },
   {
     id: 4,
-    title: 'The Forest Stroll',
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200',
-    description: 'A quiet morning couple session captured through forest light-leaks.'
-  },
-  {
-    id: 5,
-    title: 'Minimalist Silhouette',
-    category: 'Portraits',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200',
-    description: 'Strong lines and high contrast editorial portrait in studio.'
-  },
-  {
-    id: 6,
-    title: 'Midnight Revelry',
-    category: 'Events',
-    image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&q=80&w=1200',
-    description: 'Candid smiles and active energy under fairy lights.'
+    title: 'Birthday',
+    category: 'Portfolio',
+    image: '/images/birthday4.jpg',
+    description: ''
   },
   {
     id: 7,
-    title: 'Whisper of Wind',
-    category: 'Fine Art',
-    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200',
-    description: 'Abstract movement and wind-swept tall grass landscape.'
+    title: 'Event',
+    category: 'Portfolio',
+    image: '/images/event2.jpg',
+    description: ''
   },
   {
     id: 8,
-    title: 'Sun-drenched Lovers',
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1200',
-    description: 'Golden hour embrace in a field of wild barley.'
+    title: 'Event',
+    category: 'Portfolio',
+    image: '/images/event3.jpg',
+    description: ''
   },
   {
     id: 9,
-    title: 'Bespoke Joy',
-    category: 'Events',
-    image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=1200',
-    description: 'Lively crowd capturing celebratory cheers at a modern birthday.'
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait1.jpg',
+    description: ''
   },
   {
     id: 10,
-    title: 'Refined Simplicity',
-    category: 'Fine Art',
-    image: 'https://images.unsplash.com/photo-1517530094915-500495b15ade?auto=format&fit=crop&q=80&w=1200',
-    description: 'Symmetric monochrome reflection on smooth basalt rocks.'
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait2.jpg',
+    description: ''
   },
   {
     id: 11,
-    title: 'Gaze of Honesty',
-    category: 'Portraits',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200',
-    description: 'Direct natural-light portrait focusing on organic texture.'
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait3.jpg',
+    description: ''
   },
   {
     id: 12,
-    title: 'Grand Gala Toast',
-    category: 'Events',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200',
-    description: 'Long table details and warm interactions at an editorial reception.'
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait4.jpg',
+    description: ''
+  },
+  {
+    id: 13,
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait5.jpg',
+    description: ''
+  },
+  {
+    id: 14,
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait6.jpg',
+    description: ''
+  },
+  {
+    id: 15,
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait7.jpg',
+    description: ''
+  },
+  {
+    id: 16,
+    title: 'Portrait',
+    category: 'Portfolio',
+    image: '/images/portrait8.jpg',
+    description: ''
+  },
+  {
+    id: 17,
+    title: 'Vehicle',
+    category: 'Portfolio',
+    image: '/images/vehicle1.jpg',
+    description: ''
+  },
+  {
+    id: 18,
+    title: 'Vehicle',
+    category: 'Portfolio',
+    image: '/images/vehicle2.jpg',
+    description: ''
+  },
+  {
+    id: 19,
+    title: 'Wedding',
+    category: 'Portfolio',
+    image: '/images/wedding1.jpg',
+    description: ''
+  },
+  {
+    id: 20,
+    title: 'Wedding',
+    category: 'Portfolio',
+    image: '/images/wedding2.jpg',
+    description: ''
   }
 ];
 
-const categories = ['All', 'Weddings', 'Portraits', 'Events', 'Fine Art'] as const;
-
-type FilterType = typeof categories[number];
-
 export default function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState<FilterType>('All');
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
-
-  const filteredPhotos = photos.filter(
-    (photo) => activeFilter === 'All' || photo.category === activeFilter
-  );
 
   const handlePrev = useCallback(() => {
     if (selectedPhotoIndex === null) return;
     setSelectedPhotoIndex((prevIndex) => {
       if (prevIndex === null) return null;
-      return prevIndex === 0 ? filteredPhotos.length - 1 : prevIndex - 1;
+      return prevIndex === 0 ? photos.length - 1 : prevIndex - 1;
     });
-  }, [selectedPhotoIndex, filteredPhotos]);
+  }, [selectedPhotoIndex]);
 
   const handleNext = useCallback(() => {
     if (selectedPhotoIndex === null) return;
     setSelectedPhotoIndex((prevIndex) => {
       if (prevIndex === null) return null;
-      return prevIndex === filteredPhotos.length - 1 ? 0 : prevIndex + 1;
+      return prevIndex === photos.length - 1 ? 0 : prevIndex + 1;
     });
-  }, [selectedPhotoIndex, filteredPhotos]);
+  }, [selectedPhotoIndex]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -159,33 +192,13 @@ export default function Portfolio() {
             Selected Galleries
           </h1>
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
-            Explore stories of love, light, and quiet elegance. Filter by category to view custom collections.
+            Explore stories of love, light, and quiet elegance.
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2 border-b border-slate-100 pb-6">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setActiveFilter(category);
-                setSelectedPhotoIndex(null);
-              }}
-              className={`rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 ${
-                activeFilter === category
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-[#faf8f5] text-muted hover:bg-slate-100 hover:text-primary'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         {/* Gallery Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
-          {filteredPhotos.map((photo, index) => (
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
+          {photos.map((photo, index) => (
             <div
               key={photo.id}
               onClick={() => setSelectedPhotoIndex(index)}
@@ -207,7 +220,6 @@ export default function Portfolio() {
                   {photo.category}
                 </span>
                 <h3 className="mt-1 font-serif text-lg font-medium text-white">{photo.title}</h3>
-                <p className="mt-1 text-xs text-slate-200 line-clamp-2">{photo.description}</p>
                 <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white">
                   <span>View Fullscreen</span>
                   <Maximize2 className="h-3.5 w-3.5" />
@@ -217,7 +229,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {filteredPhotos.length === 0 && (
+        {photos.length === 0 && (
           <div className="py-24 text-center text-muted">No photographs in this category yet.</div>
         )}
       </div>
@@ -255,21 +267,18 @@ export default function Portfolio() {
           {/* Media Content Area */}
           <div className="relative max-h-[85vh] max-w-[90vw] flex flex-col items-center justify-center">
             <img
-              src={filteredPhotos[selectedPhotoIndex].image}
-              alt={filteredPhotos[selectedPhotoIndex].title}
+              src={photos[selectedPhotoIndex].image}
+              alt={photos[selectedPhotoIndex].title}
               className="max-h-[75vh] max-w-[85vw] object-contain rounded-lg select-none shadow-2xl animate-fade-in"
             />
             {/* Image Details Caption */}
             <div className="mt-6 text-center text-white max-w-lg space-y-1">
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                {filteredPhotos[selectedPhotoIndex].category} ({selectedPhotoIndex + 1} / {filteredPhotos.length})
+                {photos[selectedPhotoIndex].category}
               </span>
               <h2 className="font-serif text-xl font-light">
-                {filteredPhotos[selectedPhotoIndex].title}
+                {photos[selectedPhotoIndex].title}
               </h2>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {filteredPhotos[selectedPhotoIndex].description}
-              </p>
             </div>
           </div>
         </div>

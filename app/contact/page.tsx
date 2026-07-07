@@ -1,5 +1,5 @@
 import BookingForm from '@/components/BookingForm';
-import { Facebook, Instagram, Phone, Mail, MapPin, Compass, Clock } from 'lucide-react';
+import { Facebook, Phone, Mail, MapPin, Compass, Clock } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -37,7 +37,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Phone Support</span>
-                    <a href="tel:+94771234567" className="font-semibold text-primary transition hover:text-muted">+94 77 123 4567</a>
+                    <a href="tel:+94771234567" className="font-semibold text-primary transition hover:text-muted">+94 71 532 7267</a>
                   </div>
                 </li>
                 
@@ -47,7 +47,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Email Inquiry</span>
-                    <a href="mailto:hello@tharuphotography.com" className="font-semibold text-primary transition hover:text-muted">hello@tharuphotography.com</a>
+                    <a href="mailto:o.k.dtharushalakshan@gmail.com" className="font-semibold text-primary transition hover:text-muted">o.k.dtharushalakshan@gmail.com</a>
                   </div>
                 </li>
 
@@ -86,11 +86,20 @@ export default function Contact() {
                     <span>Facebook Profile</span>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.tiktok.com/@tharu_photograph?is_from_webapp=1&sender_device=pc"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-muted shadow-sm transition hover:bg-primary hover:text-white"
                   >
-                    <Instagram className="h-3.5 w-3.5" />
-                    <span>Instagram</span>
+                    <svg
+                      className="h-3.5 w-3.5"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
+                    </svg>
+                    <span>TikTok</span>
                   </a>
                 </div>
               </div>
