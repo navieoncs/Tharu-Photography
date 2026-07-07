@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-inter);
+  background-color: #faf8f5;
+  color: #111827;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #faf8f5;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+::selection {
+  background: #111827;
+  color: #faf8f5;
+}
+
+.day-picker {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+}
+
+.day-picker__month {
+  padding: 1rem;
+}
+
+.day-picker__caption {
+  margin-bottom: 1rem;
+}
+
+.day-picker__day {
+  width: 2.8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  border-radius: 0.75rem;
+}
+
+.day-picker__day--selected,
+.day-picker__day:hover {
+  background-color: #111827;
+  color: white;
+}
