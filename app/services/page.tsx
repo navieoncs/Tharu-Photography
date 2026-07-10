@@ -1,9 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Check, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from '@/components/ScrollReveal';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ServiceCategory {
   name: string;
@@ -79,20 +86,42 @@ export default function Services() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+    tl.fromTo(headingRef.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.4 }
+    );
+
+    tl.fromTo(subtitleRef.current,
+      { opacity: 0, y: 25 },
+      { opacity: 1, y: 0, duration: 1.2 },
+      '-=1.0'
+    );
+  }, { scope: heroSectionRef });
+
   return (
     <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Intro Header */}
-        <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
+        <div ref={heroSectionRef} className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Services & Investment</span>
-          <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
+          <h1 ref={headingRef} className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl opacity-0 translate-y-[60px]">
             Investment in Art
           </h1>
-          <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
+          <p ref={subtitleRef} className="mx-auto max-w-xl text-sm leading-relaxed text-muted opacity-0 translate-y-[25px]">
             Bespoke collections tailored for editorial beauty. Rates and coverage options are customized and negotiated directly over the phone.
           </p>
-        </ScrollReveal>
+        </div>
 
         {/* Services Categories Grid */}
         <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

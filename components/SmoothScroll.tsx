@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll() {
+  const pathname = usePathname();
+  const [lenisInst, setLenisInst] = useState<Lenis | null>(null);
+
   useEffect(() => {
     // Respect accessibility settings
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,6 +23,8 @@ export default function SmoothScroll() {
       gestureOrientation: "vertical",
       smoothWheel: true,
     });
+    
+    setLenisInst(lenis);
 
     // Connect Lenis scroll updates to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -37,6 +43,14 @@ export default function SmoothScroll() {
       gsap.ticker.remove(updateRaf);
     };
   }, []);
+
+  useEffect(() => {
+    if (lenisInst) {
+      lenisInst.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, lenisInst]);
 
   return null;
 }

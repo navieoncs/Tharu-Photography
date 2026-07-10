@@ -26,7 +26,7 @@ export default function ScrollReveal({
   duration = 0.8,
   delay = 0,
   stagger = 0,
-  triggerHook = "top 80%"
+  triggerHook = "top 95%"
 }: ScrollRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 

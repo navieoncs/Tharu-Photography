@@ -46,6 +46,7 @@ export default function FramesPage() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
   
   const frameStyles: FrameStyle[] = [
     {
@@ -161,12 +162,42 @@ export default function FramesPage() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
-    // Hero Text Entrance Timeline
-    const tl = gsap.timeline();
-    tl.fromTo(heroRef.current, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power2.out" })
-      .fromTo(headingRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power4.out" }, "-=0.8")
-      .fromTo(subheadingRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
-      .fromTo(buttonsRef.current, { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "power4.out" }, "-=0.4");
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+    tl.fromTo(headingRef.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.4 }
+    );
+
+    tl.fromTo(subheadingRef.current,
+      { opacity: 0, y: 25 },
+      { opacity: 1, y: 0, duration: 1.2 },
+      '-=1.0'
+    );
+
+    if (buttonsRef.current) {
+      tl.fromTo(buttonsRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 1.0 },
+        '-=0.9'
+      );
+    }
+
+    if (photoRef.current) {
+      tl.fromTo(photoRef.current,
+        { opacity: 0, y: 50, scale: 1.12 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          duration: 1.4,
+          onComplete: () => {
+            gsap.set(photoRef.current, { clearProps: "transform,scale" });
+          }
+        },
+        '-=1.2'
+      );
+    }
   }, { scope: heroRef });
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -208,15 +239,15 @@ export default function FramesPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
                 Artisanal Craftsmanship
               </span>
-              <h1 ref={headingRef} className="font-serif text-5xl font-light leading-[1.12] text-primary sm:text-6xl lg:text-7xl">
+              <h1 ref={headingRef} className="font-serif text-5xl font-light leading-[1.12] text-primary sm:text-6xl lg:text-7xl opacity-0 translate-y-[60px]">
                 Preserve Your <br/>
                 <span className="font-normal italic">Memories</span>.<br/>
                 Frame Them Beautifully.
               </h1>
-              <p ref={subheadingRef} className="max-w-xl text-base leading-8 text-muted sm:text-lg">
+              <p ref={subheadingRef} className="max-w-xl text-base leading-8 text-muted sm:text-lg opacity-0 translate-y-[25px]">
                 Transform your favorite photographs into timeless pieces of art with handcrafted premium frames made to complement every space.
               </p>
-              <div ref={buttonsRef} className="flex flex-wrap items-center gap-4 pt-4">
+              <div ref={buttonsRef} className="flex flex-wrap items-center gap-4 pt-4 opacity-0 scale-90">
                 <a
                   href="#collections"
                   onClick={scrollToCollections}
@@ -234,7 +265,7 @@ export default function FramesPage() {
             </div>
 
             {/* Hero Image Wall Collage */}
-            <div className="relative">
+            <div ref={photoRef} className="relative opacity-0 translate-y-[50px] scale-[1.12]">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-2xl">
                 <ParallaxWrapper speed={5} className="h-full w-full">
                   {/* Outer Frame Mockup built inside container */}
