@@ -16,19 +16,19 @@ export default function Home() {
   const featuredWorks = [
     {
       title: 'Golden Union',
-      category: 'Wedding & Elopement',
+      category: 'Wedding',
       image: '/images/wedding2.jpg',
       description: 'Vows shared as the sky melted into hues of amber and rose.'
     },
     {
       title: 'Melody in Motion',
-      category: 'Editorial Portrait',
+      category: 'Portrait',
       image: '/images/portrait1.jpg',
       description: 'Soft forest light and graceful violin melodies in perfect harmony.'
     },
     {
       title: 'Golden Meadow',
-      category: 'Editorial Portrait',
+      category: 'Portrait',
       image: '/images/portrait2.jpg',
       description: 'Radiant light, flowing colors, and a carefree moment among the tall grass.'
     }

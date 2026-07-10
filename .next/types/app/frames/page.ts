@@ -1,4 +1,4 @@
-// File: C:\Users\stunt\Downloads\GitHub Clones\Tharu-Photography\app\frames\page.tsx
+// File: C:\Users\navid\Downloads\Tharu - Photography\Tharu-Photography\app\frames\page.tsx
 import * as entry from '../../../../app/frames/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -22,129 +22,129 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: 1,
-    title: 'Birthday',
-    category: 'Portfolio',
+    title: 'First Year Joy',
+    category: 'Birthday',
     image: '/images/birthday1.jpg',
-    description: ''
+    description: 'Celebrating a beautiful milestone with family.'
   },
   {
     id: 2,
-    title: 'Birthday',
-    category: 'Portfolio',
+    title: 'Golden Celebration',
+    category: 'Birthday',
     image: '/images/birthday2.jpg',
-    description: ''
+    description: 'A magnificent evening for a 50th birthday gala.'
   },
   {
     id: 3,
-    title: 'Birthday',
-    category: 'Portfolio',
+    title: 'Surprise Party Moments',
+    category: 'Birthday',
     image: '/images/birthday3.jpg',
-    description: ''
+    description: 'Capturing genuine reactions and heartfelt laughs.'
   },
   {
     id: 4,
-    title: 'Birthday',
-    category: 'Portfolio',
+    title: 'Sweet Sixteen',
+    category: 'Birthday',
     image: '/images/birthday4.jpg',
-    description: ''
+    description: 'A glamorous and fun-filled afternoon for the birthday girl.'
   },
   {
     id: 7,
-    title: 'Event',
-    category: 'Portfolio',
+    title: 'Corporate Gala',
+    category: 'Event',
     image: '/images/event2.jpg',
-    description: ''
+    description: 'An elegant evening of networking and celebration.'
   },
   {
     id: 8,
-    title: 'Event',
-    category: 'Portfolio',
+    title: 'Charity Ball',
+    category: 'Event',
     image: '/images/event3.jpg',
-    description: ''
+    description: 'Documenting the speeches and candid interactions.'
   },
   {
     id: 9,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Melody in Motion',
+    category: 'Portrait',
     image: '/images/portrait1.jpg',
-    description: ''
+    description: 'Soft forest light and graceful violin melodies.'
   },
   {
     id: 10,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Golden Meadow',
+    category: 'Portrait',
     image: '/images/portrait2.jpg',
-    description: ''
+    description: 'Radiant light, flowing colors in tall grass.'
   },
   {
     id: 11,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Urban Edge',
+    category: 'Portrait',
     image: '/images/portrait3.jpg',
-    description: ''
+    description: 'A sharp, modern look against the city skyline.'
   },
   {
     id: 12,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Classic Headshot',
+    category: 'Portrait',
     image: '/images/portrait4.jpg',
-    description: ''
+    description: 'Professional and clean studio lighting.'
   },
   {
     id: 13,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Creative Soul',
+    category: 'Portrait',
     image: '/images/portrait5.jpg',
-    description: ''
+    description: "Artistic lighting highlighting the subject's passion."
   },
   {
     id: 14,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Autumn Stroll',
+    category: 'Portrait',
     image: '/images/portrait6.jpg',
-    description: ''
+    description: 'Warm tones and cozy vibes in the park.'
   },
   {
     id: 15,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Vintage Glamour',
+    category: 'Portrait',
     image: '/images/portrait7.jpg',
-    description: ''
+    description: 'A timeless, classic Hollywood style portrait.'
   },
   {
     id: 16,
-    title: 'Portrait',
-    category: 'Portfolio',
+    title: 'Gallery Exhibition Layout',
+    category: 'Portrait',
     image: '/images/portrait8.jpg',
-    description: ''
+    description: 'A showcase of fine art and elegance.'
   },
   {
     id: 17,
-    title: 'Vehicle',
-    category: 'Portfolio',
+    title: 'Classic Muscle',
+    category: 'Vehicle',
     image: '/images/vehicle1.jpg',
-    description: ''
+    description: 'A restored vintage beauty catching the evening sun.'
   },
   {
     id: 18,
-    title: 'Vehicle',
-    category: 'Portfolio',
+    title: 'Modern Speed',
+    category: 'Vehicle',
     image: '/images/vehicle2.jpg',
-    description: ''
+    description: 'Sleek lines and aerodynamic design in motion.'
   },
   {
     id: 19,
-    title: 'Wedding',
-    category: 'Portfolio',
+    title: 'Premium Gilded Portrait',
+    category: 'Wedding',
     image: '/images/wedding1.jpg',
-    description: ''
+    description: 'The bride and groom in a classic embrace.'
   },
   {
     id: 20,
-    title: 'Wedding',
-    category: 'Portfolio',
+    title: 'Golden Union',
+    category: 'Wedding',
     image: '/images/wedding2.jpg',
-    description: ''
+    description: 'Vows shared as the sky melted into hues of amber.'
   }
 ];
 
