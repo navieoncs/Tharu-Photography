@@ -1,7 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollReveal from '@/components/ScrollReveal';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface Photo {
   id: number;
@@ -142,6 +150,53 @@ const photos: Photo[] = [
 
 export default function Portfolio() {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    // Target the individual item wrappers for staggered reveal
+    const items = gsap.utils.toArray('.gallery-item');
+    
+    gsap.fromTo(items,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: galleryRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      }
+    );
+
+    // Subtle image zoom-in on viewport entry
+    const imgs = gsap.utils.toArray('.gallery-item img');
+    imgs.forEach((img: any) => {
+      gsap.fromTo(img,
+        { scale: 1.12 },
+        {
+          scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => {
+            // Reset transforms so that standard CSS hover transitions work
+            gsap.set(img, { clearProps: 'transform,scale' });
+          }
+        }
+      );
+    });
+  }, { scope: galleryRef });
 
   const handlePrev = useCallback(() => {
     if (selectedPhotoIndex === null) return;
@@ -183,10 +238,10 @@ export default function Portfolio() {
   }, [selectedPhotoIndex, handleKeyDown]);
 
   return (
-    <div className="bg-white py-16 sm:py-24">
+    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
-        <div className="space-y-4 text-center">
+        <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Portfolio</span>
           <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
             Selected Galleries
@@ -194,15 +249,15 @@ export default function Portfolio() {
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
             Explore stories of love, light, and quiet elegance.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Gallery Grid */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
+        <div ref={galleryRef} className="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8">
           {photos.map((photo, index) => (
             <div
               key={photo.id}
               onClick={() => setSelectedPhotoIndex(index)}
-              className="group relative cursor-pointer overflow-hidden rounded-[2rem] bg-slate-100 transition-all duration-500 hover:shadow-xl hover:shadow-slate-100"
+              className="gallery-item group relative cursor-pointer overflow-hidden rounded-[2rem] bg-slate-100 transition-all duration-500 hover:shadow-xl hover:shadow-slate-100"
             >
               {/* Image element */}
               <div className="aspect-[3/4] w-full overflow-hidden">
@@ -210,7 +265,7 @@ export default function Portfolio() {
                   src={photo.image}
                   alt={photo.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-750 ease-out group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-750 ease-out group-hover:scale-[1.03]"
                 />
               </div>
 

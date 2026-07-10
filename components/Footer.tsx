@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-4">
-            <Link href="/" className="text-xl font-semibold uppercase tracking-[0.35em] text-primary">
-              THARU
+            <Link href="/" className="flex items-center">
+              <img src="/images/logo.png" alt="Tharu Photography" className="h-9 w-auto object-contain scale-[2.25] origin-left" />
             </Link>
             <p className="text-sm leading-relaxed text-muted max-w-xs">
               Capturing pure emotion, editorial portraits, and fine-art lifestyle photography with quiet elegance.
@@ -59,6 +59,9 @@ export default function Footer() {
               <li>
                 <Link href="/about" className="transition hover:text-primary">About</Link>
               </li>
+              <li>
+                <Link href="/frames" className="transition hover:text-primary">Frames</Link>
+              </li>
             </ul>
           </div>
 
@@ -96,8 +99,6 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Tharu Photography. All rights reserved.</p>
           <p className="flex items-center gap-4">
             <Link href="/contact" className="transition hover:text-primary">Book a Session</Link>
-            <span>•</span>
-            <a href="https://www.facebook.com/people/Tharu-Photography/61566285896022/" target="_blank" rel="noopener noreferrer" className="transition hover:text-primary">Follow on Facebook</a>
           </p>
         </div>
       </div>

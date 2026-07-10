@@ -1,5 +1,9 @@
+"use client";
+
 import Link from 'next/link';
-import { Camera, Heart, Sun, Award, ShieldCheck, Mail, ArrowRight } from 'lucide-react';
+import { Camera, Heart, Sun, Award, Mail, ArrowRight } from 'lucide-react';
+import ScrollReveal from '@/components/ScrollReveal';
+import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 export default function About() {
   const pillars = [
@@ -21,9 +25,9 @@ export default function About() {
   ];
 
   const stats = [
-    { val: '5+', label: 'Years Active' },
-    { val: '150+', label: 'Stories Captured' },
-    { val: '10K+', label: 'Delivered Images' },
+    { val: '3+', label: 'Years Active' },
+    { val: '70+', label: 'Stories Captured' },
+    { val: '3K+', label: 'Delivered Images' },
     { val: '100%', label: 'Happy Clients' }
   ];
 
@@ -34,11 +38,11 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-white py-16 sm:py-24">
+    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Page Header */}
-        <div className="space-y-4 text-center">
+        <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">The Story</span>
           <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
             Behind the Lens
@@ -46,21 +50,23 @@ export default function About() {
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
             A look into our creative philosophy, technical gear, and the story of Tharu Photography.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Bio & Intro Grid */}
         <div className="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          {/* Portrait Image frame */}
+          {/* Portrait Image frame with parallax */}
           <div className="relative overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-xl shadow-slate-100/50 aspect-[4/5]">
-            <img
-              src="/images/tharu.jpg"
-              alt="Tharu Portrait"
-              className="h-full w-full object-cover transition duration-700 hover:scale-[1.02]"
-            />
+            <ParallaxWrapper speed={10} className="h-full w-full">
+              <img
+                src="/images/tharu.jpg"
+                alt="Tharu Portrait"
+                className="h-[120%] w-[120%] -translate-y-[10%] object-cover transition duration-700 hover:scale-[1.02]"
+              />
+            </ParallaxWrapper>
           </div>
 
           {/* Narrative Text */}
-          <div className="space-y-6">
+          <ScrollReveal y={40} triggerHook="top 80%" className="space-y-6">
             <span className="text-xs font-semibold uppercase tracking-widest text-muted">Meet the Photographer</span>
             <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">
               Hello, I'm <span className="font-normal italic">Tharu</span>.
@@ -69,7 +75,7 @@ export default function About() {
               Photography, to me, is the art of pausing time to capture feeling. I started my journey with a simple vintage film camera, fascinated by how light could transform ordinary spaces into moments of quiet beauty. 
             </p>
             <p className="text-sm leading-relaxed text-muted">
-              Over the last five years, Tharu Photography has grown into a boutique creative studio dedicated to documenting weddings, elopements, and individual portraits. We approach every session as a collaborative editorial project. We steer away from rigid, overly staged setups, choosing instead to guide our subjects into comfortable spaces where their genuine personalities shine.
+              Over the last three years, Tharu Photography has grown into a boutique creative studio dedicated to documenting weddings, elopements, and individual portraits. We approach every session as a collaborative editorial project. We steer away from rigid, overly staged setups, choosing instead to guide our subjects into comfortable spaces where their genuine personalities shine.
             </p>
             
             {/* Stats list */}
@@ -81,17 +87,17 @@ export default function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Pillars / Philosophy Grid */}
         <div className="mt-28 border-t border-slate-100 pt-20">
-          <div className="text-center space-y-3 mb-16">
+          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-16">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Our Core Pillars</span>
             <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Creative Philosophy</h2>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid gap-10 md:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-10 md:grid-cols-3">
             {pillars.map((pillar, idx) => (
               <div key={idx} className="rounded-3xl bg-[#faf8f5] p-8 border border-slate-100 space-y-4">
                 <div className="rounded-2xl bg-white p-3.5 w-fit shadow-sm">
@@ -101,11 +107,11 @@ export default function About() {
                 <p className="text-xs text-muted leading-relaxed">{pillar.text}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Gear and technical details */}
-        <div className="mt-28 border-t border-slate-100 pt-20">
+        <ScrollReveal y={40} triggerHook="top 80%" className="mt-28 border-t border-slate-100 pt-20">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Technical Details</span>
@@ -130,10 +136,10 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* CTA */}
-        <div className="mt-28 border-t border-slate-100 pt-20 text-center space-y-6">
+        <ScrollReveal y={50} triggerHook="top 85%" className="mt-28 border-t border-slate-100 pt-20 text-center space-y-6">
           <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Let's craft your story together.</h2>
           <p className="text-sm text-muted max-w-lg mx-auto leading-relaxed">
             Reach out to share your project dates, style ideas, and locations. We look forward to working with you.
@@ -146,7 +152,7 @@ export default function About() {
               Get In Touch <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </div>

@@ -1,20 +1,29 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Frames', href: '/frames' },
   ];
 
   const isActive = (path: string) => {
@@ -24,11 +33,40 @@ export default function Navbar() {
     return pathname.startsWith(path);
   };
 
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    // Shrink header padding and increase background opacity/blur on scroll
+    gsap.to(containerRef.current, {
+      paddingTop: '0.75rem', // equivalent to py-3
+      paddingBottom: '0.75rem',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top+=50 top',
+        end: 'top+=100 top',
+        scrub: true,
+      }
+    });
+
+    gsap.to(headerRef.current, {
+      backgroundColor: 'rgba(250, 248, 245, 0.95)',
+      backdropFilter: 'blur(20px)',
+      boxShadow: '0 4px 20px rgba(17, 24, 39, 0.03)',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top+=50 top',
+        end: 'top+=100 top',
+        scrub: true,
+      }
+    });
+  }, { scope: headerRef });
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/50 bg-[#faf8f5]/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-        <Link href="/" className="text-xl font-bold uppercase tracking-[0.35em] text-primary">
-          THARU
+    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-slate-200/50 bg-[#faf8f5]/85 backdrop-blur-md">
+      <div ref={containerRef} className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+        <Link href="/" className="flex items-center">
+          <img src="/images/logo.png" alt="Tharu Photography" className="h-10 w-auto object-contain scale-[2.25] origin-left" />
         </Link>
 
         {/* Desktop Navigation */}

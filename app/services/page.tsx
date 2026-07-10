@@ -2,51 +2,45 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Check, Sparkles, Clock, Compass, FileText, ArrowRight } from 'lucide-react';
+import { ChevronDown, Check, ArrowRight } from 'lucide-react';
+import ScrollReveal from '@/components/ScrollReveal';
 
-interface Package {
+interface ServiceCategory {
   name: string;
   category: string;
-  price: string;
-  duration: string;
+  description: string;
   deliverables: string[];
   features: string[];
-  popular?: boolean;
 }
 
-const packages: Package[] = [
+const services: ServiceCategory[] = [
   {
-    name: 'Editorial Portrait',
-    category: 'Individual & Branding',
-    price: '$350',
-    duration: '1.5 Hours',
-    deliverables: ['25 Fully Edited High-Res Photos', 'Private Digital Gallery', 'Personal Print License'],
-    features: ['1 Location', 'Up to 2 outfit changes', 'Creative direction & styling prep guide', 'Sneak peek within 48 hours']
+    name: 'Weddings & Elopements',
+    category: 'Selected Unions',
+    description: 'Cinematic visual narratives documenting wedding pre-shoots, ceremony highlights, fine-art couple sessions, and details.',
+    deliverables: ['Custom high-resolution digital gallery', 'Optional luxury layflat albums', 'Custom coverage timeline plan'],
+    features: ['Tailored hourly packages', 'Lead + second photographer options', 'Pre-wedding consultation & timeline planning']
   },
   {
-    name: 'Intimate Story',
-    category: 'Weddings & Elopements',
-    price: '$1,800',
-    duration: '6 Hours',
-    deliverables: ['300+ Curated & Edited Photos', 'Private Gallery & Print Shop Access', 'Sneak Peek Gallery'],
-    features: ['Pre-wedding consult & timeline planning', 'One lead photographer', 'High-res & web-size download options', 'Digital delivery in 6 weeks'],
-    popular: true
+    name: 'Editorial Portraits',
+    category: 'Creative Sessions',
+    description: 'Striking individual sessions, fashion editorials, and commercial branding collections that emphasize authentic character.',
+    deliverables: ['High-res retouched digital files', 'Creative direction & styling support', 'Bespoke print package options'],
+    features: ['Studio or outdoor lighting setups', 'Multiple outfit changes', 'Creative storyboard planning']
   },
   {
-    name: 'Full Day Union',
-    category: 'Weddings & Elopements',
-    price: '$2,800',
-    duration: '10 Hours',
-    deliverables: ['500+ Curated & Edited Photos', 'High-Res Digital Gallery', 'Luxury Layflat Album (10x10)'],
-    features: ['Everything in Intimate Story', 'Complimentary engagement session', 'Second photographer included', 'Digital delivery in 8 weeks']
+    name: 'Milestones & Birthdays',
+    category: 'Documentary Coverage',
+    description: 'Candid and elegant coverage of family reunions, anniversaries, corporate launches, and birthday celebrations.',
+    deliverables: ['Curated digital downloads', 'Online gallery sharing link', 'Rapid sneak-peek turnaround'],
+    features: ['Documentary-style candid capture', 'Group portrait coordination', 'Full digital downloads']
   },
   {
-    name: 'Event Coverage',
-    category: 'Birthdays & Celebrations',
-    price: '$180/hr',
-    duration: 'Minimum 3 Hours',
-    deliverables: ['50+ Edited Photos per hour', 'Online Gallery Download', 'Commercial / Event License'],
-    features: ['Candid documentary capture', 'Highlight edit styling', 'Group portrait setups', 'Digital delivery in 3 weeks']
+    name: 'Commercial & Branding',
+    category: 'Product & Fashion Campaigns',
+    description: 'Custom campaigns, product catalogs, lifestyle lookbooks, and high-end imagery tailored for editorial prints and platforms.',
+    deliverables: ['Commercial licensing permissions', 'High-res & web-optimized delivery', 'Full digital asset suite'],
+    features: ['Commercial lighting & staging setups', 'Product styling & detail framing', 'Custom usage licenses']
   }
 ];
 
@@ -86,58 +80,45 @@ export default function Services() {
   };
 
   return (
-    <div className="bg-white py-16 sm:py-24">
+    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Intro Header */}
-        <div className="space-y-4 text-center">
+        <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Services & Investment</span>
           <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
             Investment in Art
           </h1>
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
-            Transparent packages designed for editorial beauty. Every package includes personalized planning and a beautiful digital gallery.
+            Bespoke collections tailored for editorial beauty. Rates and coverage options are customized and negotiated directly over the phone.
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Pricing Cards Grid */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {packages.map((pkg, idx) => (
+        {/* Services Categories Grid */}
+        <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((svc, idx) => (
             <div
               key={idx}
-              className={`relative flex flex-col justify-between rounded-[2.5rem] bg-white p-8 border transition-all duration-300 ${
-                pkg.popular
-                  ? 'border-primary shadow-xl shadow-slate-100 ring-2 ring-primary/5'
-                  : 'border-slate-100 shadow-sm hover:border-slate-300'
-              }`}
+              className="relative flex flex-col justify-between rounded-[2.5rem] bg-white p-8 border border-slate-100 shadow-sm hover:border-slate-300 transition-all duration-300"
             >
-              {pkg.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white">
-                  Most Requested
-                </span>
-              )}
-              
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted">{pkg.category}</span>
-                  <h3 className="mt-2 font-serif text-xl font-medium text-primary">{pkg.name}</h3>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted">{svc.category}</span>
+                  <h3 className="mt-2 font-serif text-xl font-medium text-primary">{svc.name}</h3>
                 </div>
                 
                 <div className="border-t border-slate-100 pt-4">
-                  <span className="text-4xl font-light text-primary">{pkg.price}</span>
-                  <span className="text-xs text-muted block mt-1">session fee</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Rates</span>
+                  <p className="mt-1 text-sm font-medium text-primary">Negotiated over phone</p>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-muted">
-                  <Clock className="h-4 w-4 text-slate-400" />
-                  <span>Duration: {pkg.duration}</span>
-                </div>
+                <p className="text-xs leading-relaxed text-muted">{svc.description}</p>
 
                 {/* Deliverables */}
                 <div className="space-y-2 border-t border-slate-100 pt-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary">What's Included</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary">Typical Deliverables</span>
                   <ul className="space-y-2 text-xs text-muted">
-                    {pkg.deliverables.map((item, i) => (
+                    {svc.deliverables.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <Check className="h-3.5 w-3.5 text-slate-400 mt-0.5" />
                         <span>{item}</span>
@@ -148,9 +129,9 @@ export default function Services() {
 
                 {/* Features */}
                 <div className="space-y-2 border-t border-slate-100 pt-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary">Session Details</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary">Available Options</span>
                   <ul className="space-y-2 text-xs text-muted">
-                    {pkg.features.map((feature, i) => (
+                    {svc.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-primary font-bold mt-0.5">•</span>
                         <span>{feature}</span>
@@ -163,32 +144,28 @@ export default function Services() {
               <div className="mt-8 pt-4">
                 <Link
                   href="/contact"
-                  className={`inline-flex w-full items-center justify-center rounded-full py-3.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all ${
-                    pkg.popular
-                      ? 'bg-primary text-white hover:bg-slate-800'
-                      : 'bg-slate-50 text-primary hover:bg-slate-100'
-                  }`}
+                  className="inline-flex w-full items-center justify-center rounded-full py-3.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all bg-slate-50 text-primary hover:bg-slate-100"
                 >
-                  Inquire Package
+                  Inquire Details
                 </Link>
               </div>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
 
         {/* ROADMAP SECTION: How It Works */}
         <div className="mt-28 border-t border-slate-100 pt-20">
-          <div className="text-center space-y-3">
+          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">The Experience</span>
             <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Your Journey with Us</h2>
             <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
               We design a smooth, premium experience from the first click to the final gallery delivery.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-16 grid gap-8 md:grid-cols-5">
+          <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-16 grid gap-8 md:grid-cols-5">
             {[
-              { num: '01', title: 'Inquire', text: 'Select package, pick your preferred date, and share your vision in our secure calendar form.' },
+              { num: '01', title: 'Inquire', text: 'Select service type, pick your preferred date, and share your vision in our secure calendar form.' },
               { num: '02', title: 'Consult', text: 'We connect to refine styling guidelines, decide location backdrops, and outline the timeline.' },
               { num: '03', title: 'The Shoot', text: 'A relaxed session focused on natural poses, raw smiles, and beautiful play of lighting.' },
               { num: '04', title: 'Art Edit', text: 'We review all shots frame by frame, color grading details to match our editorial signature.' },
@@ -200,17 +177,17 @@ export default function Services() {
                 <p className="text-xs text-muted leading-relaxed">{step.text}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* FAQ ACCORDION */}
         <div className="mt-28 max-w-4xl mx-auto border-t border-slate-100 pt-20">
-          <div className="text-center space-y-3 mb-12">
+          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-12">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">FAQ</span>
             <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Common Questions</h2>
-          </div>
+          </ScrollReveal>
 
-          <div className="space-y-4">
+          <ScrollReveal stagger={0.1} triggerHook="top 85%" className="space-y-4">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
@@ -241,11 +218,11 @@ export default function Services() {
                 </div>
               );
             })}
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* CTA Banner */}
-        <div className="mt-28 rounded-[3rem] bg-[#111827] px-8 py-12 text-center text-white md:px-12 md:py-16">
+        <ScrollReveal y={40} triggerHook="top 85%" className="mt-28 rounded-[3rem] bg-[#111827] px-8 py-12 text-center text-white md:px-12 md:py-16">
           <h2 className="font-serif text-3xl font-light leading-tight sm:text-4xl">Have a unique project in mind?</h2>
           <p className="mt-3 text-sm text-slate-300 max-w-lg mx-auto">
             We love crafting custom sessions. Let us know what you want to build and we will send a tailored estimate.
@@ -258,7 +235,7 @@ export default function Services() {
               Get Custom Quote <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </div>

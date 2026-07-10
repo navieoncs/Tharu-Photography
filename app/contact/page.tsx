@@ -1,13 +1,16 @@
+"use client";
+
 import BookingForm from '@/components/BookingForm';
 import { Facebook, Phone, Mail, MapPin, Compass, Clock } from 'lucide-react';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Contact() {
   return (
-    <div className="bg-white py-16 sm:py-24">
+    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Page Header */}
-        <div className="space-y-4 text-center">
+        <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Inquire</span>
           <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
             Book a Session
@@ -15,13 +18,13 @@ export default function Contact() {
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
             Have an event date in mind or want to organize a branding portrait session? Let's begin the planning conversation.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Form and details grid */}
         <div className="mt-16 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           
           {/* Details Column */}
-          <div className="space-y-8">
+          <ScrollReveal y={40} stagger={0.15} triggerHook="top 80%" className="space-y-8">
             
             {/* Quick Contact Card */}
             <div className="rounded-[2.5rem] bg-[#faf8f5] p-8 border border-slate-100 space-y-6">
@@ -36,7 +39,7 @@ export default function Contact() {
                     <Phone className="h-4 w-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] block uppercase tracking-wider text-slate-400">Phone Support</span>
+                    <span className="text-[10px] block uppercase tracking-wider text-slate-400">Phone Number</span>
                     <a href="tel:+94771234567" className="font-semibold text-primary transition hover:text-muted">+94 71 532 7267</a>
                   </div>
                 </li>
@@ -53,21 +56,11 @@ export default function Contact() {
 
                 <li className="flex items-center gap-3">
                   <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] block uppercase tracking-wider text-slate-400">Main Studio Base</span>
-                    <span className="font-semibold text-primary">Colombo, Sri Lanka</span>
-                  </div>
-                </li>
-
-                <li className="flex items-center gap-3">
-                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary">
                     <Clock className="h-4 w-4" />
                   </div>
                   <div>
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Inquiry Hours</span>
-                    <span className="font-semibold text-primary">Monday – Saturday, 9:00 AM – 6:00 PM</span>
+                    <span className="font-semibold text-primary">Monday – Sunday, 9:00 AM – 10:00 PM</span>
                   </div>
                 </li>
               </ul>
@@ -108,27 +101,20 @@ export default function Contact() {
             {/* Travel Coverage details */}
             <div className="rounded-[2.5rem] bg-[#faf8f5] p-8 border border-slate-100 space-y-4">
               <div className="flex items-center gap-2 text-primary font-serif text-lg font-medium">
-                <Compass className="h-5 w-5 text-slate-500 animate-spin-slow" />
+                <Compass className="h-5 w-5 text-slate-500" />
                 <span>Travel & Coverage Area</span>
               </div>
               <p className="text-xs leading-relaxed text-muted">
-                Our main photography studio is based in Colombo, Sri Lanka. However, we love chasing unique lighting in remote locations. 
-              </p>
-              <div className="rounded-2xl bg-white p-4 text-xs text-muted space-y-2 border border-slate-100">
-                <p><strong>Standard Local Area:</strong> Colombo, Mount Lavinia, Negombo, Kalutara (No travel fee)</p>
-                <p><strong>Travel/Destination Coverage:</strong> Galle, Kandy, Ella, Bentota, Trincomalee, Nuwara Eliya, Jaffna (Standard mileage/transport fee applies)</p>
-              </div>
-              <p className="text-[10px] text-muted italic">
-                * We are fully passport-ready and available for international elopements and branding projects worldwide.
+                We are based in Elpitiya, Sri Lanka. However, we love chasing unique lighting in remote locations. 
               </p>
             </div>
 
-          </div>
+          </ScrollReveal>
 
           {/* Form Column */}
-          <div>
+          <ScrollReveal y={40} delay={0.2} triggerHook="top 80%">
             <BookingForm />
-          </div>
+          </ScrollReveal>
 
         </div>
 

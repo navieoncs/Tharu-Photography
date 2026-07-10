@@ -1,5 +1,16 @@
+"use client";
+
+import { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Star, Heart, Camera, Calendar, Award } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollReveal from '@/components/ScrollReveal';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Home() {
   const featuredWorks = [
@@ -36,10 +47,112 @@ export default function Home() {
     }
   ];
 
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const columnLeftRef = useRef<HTMLDivElement>(null);
+  const columnRightRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    // Timeline for Hero entry animations on initial page load
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+    // Heading slides upward while fading in
+    tl.fromTo(headingRef.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.4 }
+    );
+
+    // Subtitle fades in after the heading
+    tl.fromTo(subtitleRef.current,
+      { opacity: 0, y: 25 },
+      { opacity: 1, y: 0, duration: 1.2 },
+      '-=1.0'
+    );
+
+    // CTA button scales from 0.9 to 1 and fades in
+    tl.fromTo(ctaRef.current,
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 1.0 },
+      '-=0.9'
+    );
+
+    // Hero Collage image entry staggering with subtle zoom-in
+    const heroImages = gsap.utils.toArray('.hero-image-wrapper');
+    tl.fromTo(heroImages,
+      { opacity: 0, y: 50, scale: 1.12 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        scale: 1, 
+        duration: 1.4, 
+        stagger: 0.15,
+        onComplete: () => {
+          // Clear transform on completion to allow CSS hover effects to work smoothly
+          gsap.set(heroImages.map((wrapper: any) => wrapper.querySelector('img')), { clearProps: "transform,scale" });
+        }
+      },
+      '-=1.2'
+    );
+
+    // Scroll-driven subtle parallax for the collage columns
+    gsap.to(columnLeftRef.current, {
+      y: -40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroSectionRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+
+    gsap.to(columnRightRef.current, {
+      y: 40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroSectionRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+
+    // Subtle entrance zoom-in for featured works images
+    const featuredImgs = gsap.utils.toArray('.featured-img-container img');
+    featuredImgs.forEach((img: any) => {
+      gsap.fromTo(img,
+        { scale: 1.15 },
+        {
+          scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => {
+            gsap.set(img, { clearProps: 'transform,scale' });
+          }
+        }
+      );
+    });
+
+  }, { scope: heroSectionRef });
+
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
+      {/* Decorative floating parallax elements in the background */}
+      <div className="absolute top-[20%] left-[-10%] w-[35rem] h-[35rem] rounded-full bg-slate-100/50 blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-[60%] right-[-10%] w-[40rem] h-[40rem] rounded-full bg-amber-50/30 blur-3xl -z-10 pointer-events-none" />
+
       {/* 1. HERO SECTION: Editorial split or layered screen */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-20">
+      <section ref={heroSectionRef} className="relative overflow-hidden bg-white pt-4 pb-12 lg:pt-6 lg:pb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Text details */}
@@ -48,14 +161,14 @@ export default function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
                 Editorial & Fine-art
               </span>
-              <h1 className="font-serif text-5xl font-light leading-[1.15] text-primary sm:text-6xl lg:text-7xl">
+              <h1 ref={headingRef} className="font-serif text-5xl font-light leading-[1.15] text-primary sm:text-6xl lg:text-7xl">
                 Capturing <br/>
                 <span className="font-normal italic">pure emotion</span> in quiet elegance.
               </h1>
-              <p className="max-w-xl text-base leading-8 text-muted sm:text-lg">
+              <p ref={subtitleRef} className="max-w-xl text-base leading-8 text-muted sm:text-lg">
                 Tharu Photography crafts timeless visual narratives that balance natural light, organic texture, and editorial poise for clients who value artistic detail.
               </p>
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
                 <Link
                   href="/portfolio"
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all hover:bg-slate-800"
@@ -71,37 +184,37 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Visual Grid Hero Collage */}
+            {/* Visual Grid Hero Collage with Parallax columns */}
             <div className="relative grid grid-cols-2 gap-4 lg:gap-6">
-              <div className="space-y-4 lg:space-y-6">
-                <div className="overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
+              <div ref={columnLeftRef} className="space-y-4 lg:space-y-6 will-change-transform">
+                <div className="hero-image-wrapper overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
                     src="/images/portrait3.jpg"
                     alt="Editorial Portrait"
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
+                <div className="hero-image-wrapper aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
                     src="/images/wedding1.jpg"
                     alt="Wedding details"
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
               </div>
-              <div className="space-y-4 pt-8 lg:space-y-6 lg:pt-12">
-                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
+              <div ref={columnRightRef} className="space-y-4 pt-8 lg:space-y-6 lg:pt-12 will-change-transform">
+                <div className="hero-image-wrapper aspect-[3/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
                     src="/images/birthday2.jpg"
                     alt="Lifestyle portraiture"
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
-                <div className="overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
+                <div className="hero-image-wrapper overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-slate-100">
                   <img
                     src="/images/portrait4.jpg"
                     alt="Outdoor couple portrait"
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
               </div>
@@ -111,36 +224,23 @@ export default function Home() {
       </section>
 
       {/* 2. STATS & KEY PILLARS */}
-      <section className="bg-[#faf8f5] py-16 border-t border-b border-slate-100">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="flex items-start gap-4 rounded-3xl bg-white p-8 shadow-sm">
-              <div className="rounded-2xl bg-amber-50 p-3 text-amber-600">
-                <Camera className="h-6 w-6" />
-              </div>
-              <div>
+      <ScrollReveal y={40} triggerHook="top 85%">
+        <section className="bg-[#faf8f5] py-16 border-t border-b border-slate-100">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-3xl bg-white p-8 shadow-sm">
                 <h3 className="font-serif text-lg font-medium text-primary">Uncompromising Detail</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   High-fidelity capture using premium medium-format lenses for deep textures and natural tonalities.
                 </p>
               </div>
-            </div>
-            <div className="flex items-start gap-4 rounded-3xl bg-white p-8 shadow-sm">
-              <div className="rounded-2xl bg-indigo-50 p-3 text-indigo-600">
-                <Heart className="h-6 w-6" />
-              </div>
-              <div>
+              <div className="rounded-3xl bg-white p-8 shadow-sm">
                 <h3 className="font-serif text-lg font-medium text-primary">Genuine Connection</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   Creating an environment of absolute comfort where laughter, quiet glances, and pure feelings emerge organically.
                 </p>
               </div>
-            </div>
-            <div className="flex items-start gap-4 rounded-3xl bg-white p-8 shadow-sm sm:col-span-2 lg:col-span-1">
-              <div className="rounded-2xl bg-rose-50 p-3 text-rose-600">
-                <Award className="h-6 w-6" />
-              </div>
-              <div>
+              <div className="rounded-3xl bg-white p-8 shadow-sm sm:col-span-2 lg:col-span-1">
                 <h3 className="font-serif text-lg font-medium text-primary">Editorial Polish</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   Tailored styling guides, light coaching, and bespoke curation that elevate every image to magazine standards.
@@ -148,29 +248,31 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* 3. FEATURED WORK SHOWCASE */}
       <section className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 border-b border-slate-100 pb-8 md:flex-row md:items-end">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">A curated edit</span>
-              <h2 className="mt-2 font-serif text-3xl font-light text-primary sm:text-4xl">Featured Stories</h2>
+          <ScrollReveal y={30} triggerHook="top 85%">
+            <div className="flex flex-col items-start justify-between gap-4 border-b border-slate-100 pb-8 md:flex-row md:items-end">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">A curated edit</span>
+                <h2 className="mt-2 font-serif text-3xl font-light text-primary sm:text-4xl">Featured Stories</h2>
+              </div>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted"
+              >
+                View All <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted"
-            >
-              View All <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-12 grid gap-10 md:grid-cols-3">
             {featuredWorks.map((work, idx) => (
               <article key={idx} className="group relative flex flex-col items-start">
-                <div className="aspect-[3/4] w-full overflow-hidden rounded-[2.5rem] bg-slate-100">
+                <div className="featured-img-container aspect-[3/4] w-full overflow-hidden rounded-[2.5rem] bg-slate-100">
                   <img
                     src={work.image}
                     alt={work.title}
@@ -186,22 +288,22 @@ export default function Home() {
                 </div>
               </article>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 4. THE SERVICE EXPERIENCE */}
       <section className="bg-[#faf8f5] py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center space-y-4">
+          <ScrollReveal y={30} triggerHook="top 85%" className="mx-auto max-w-3xl text-center space-y-4">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Offerings</span>
             <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Services Tailored for You</h2>
             <p className="text-base text-muted leading-relaxed">
               Whether documenting a grand wedding elopement, capturing editorial branding portraiture, or preserving family legacies, we bring clean composition and elevated aesthetics.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Card 1 */}
             <div className="rounded-[2.5rem] bg-white p-10 border border-slate-100 shadow-sm space-y-6">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Classic</span>
@@ -216,7 +318,7 @@ export default function Home() {
               </ul>
               <div className="pt-4">
                 <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
-                  View packages <ArrowRight className="h-3.5 w-3.5" />
+                  Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
@@ -235,7 +337,7 @@ export default function Home() {
               </ul>
               <div className="pt-4">
                 <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
-                  View packages <ArrowRight className="h-3.5 w-3.5" />
+                  Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
@@ -254,18 +356,18 @@ export default function Home() {
               </ul>
               <div className="pt-4">
                 <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
-                  View packages <ArrowRight className="h-3.5 w-3.5" />
+                  Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 5. TESTIMONIALS */}
       <section className="bg-white py-24 border-b border-slate-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="space-y-4">
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Kind words</span>
               <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Client Love</h2>
@@ -289,14 +391,14 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 6. CALL TO ACTION BOOKING INQUIRY */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-[3rem] bg-primary px-8 py-16 text-center text-white shadow-2xl md:px-12 md:py-20">
+          <ScrollReveal y={50} triggerHook="top 85%" className="rounded-[3rem] bg-primary px-8 py-16 text-center text-white shadow-2xl md:px-12 md:py-20">
             <div className="mx-auto max-w-2xl space-y-6">
               <span className="text-xs font-semibold uppercase tracking-[0.32em] text-slate-300">Reserve your date</span>
               <h2 className="font-serif text-4xl font-light leading-tight sm:text-5xl">
@@ -315,7 +417,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
