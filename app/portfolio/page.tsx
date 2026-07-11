@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight, Maximize2, ArrowRight } from 'lucide-react';
-import BookSessionButton from '@/components/BookSessionButton';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -288,18 +287,6 @@ export default function Portfolio() {
         {photos.length === 0 && (
           <div className="py-24 text-center text-muted">No photographs in this category yet.</div>
         )}
-
-        <ScrollReveal y={50} triggerHook="top 85%" className="mt-28 border-t border-slate-100 pt-20 text-center space-y-6">
-          <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Love what you see?</h2>
-          <p className="text-sm text-muted max-w-lg mx-auto leading-relaxed">
-            Let's create something beautiful together. Reserve your date and start planning your session today.
-          </p>
-          <div className="pt-2">
-            <BookSessionButton className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-slate-800">
-              Book a Session <ArrowRight className="h-4 w-4" />
-            </BookSessionButton>
-          </div>
-        </ScrollReveal>
       </div>
 
       {/* LIGHTBOX MODAL */}
