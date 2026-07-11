@@ -6,6 +6,8 @@ import { format } from 'date-fns';
 import { Calendar as CalendarIcon, CheckCircle2, ChevronRight, Loader2 } from 'lucide-react';
 import 'react-day-picker/dist/style.css';
 
+const FORMSUBMIT_URL = 'https://formsubmit.co/o.k.dtharushalakshan@gmail.com';
+
 export default function BookingForm() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [shootType, setShootType] = useState('Editorial Portrait');
@@ -14,19 +16,49 @@ export default function BookingForm() {
   const [vision, setVision] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
+
     if (!name || !email || !selectedDate) {
-      alert("Please fill in your name, email, and choose a preferred date.");
+      setError('Please fill in your name, email, and choose a preferred date.');
       return;
     }
-    
+
     setIsSubmitting(true);
-    // Simulate API request delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('type_of_shoot', shootType);
+    formData.append('message', vision || 'No additional details provided.');
+    formData.append('preferred_date', format(selectedDate, 'PPP'));
+    formData.append('_subject', 'New Booking Inquiry - Tharu Photography');
+    formData.append('_replyto', email);
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+
+    try {
+      const response = await fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again or contact us directly.');
+      }
+    } catch {
+      setError('Unable to send your inquiry. Please check your connection or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -56,6 +88,7 @@ export default function BookingForm() {
             setEmail('');
             setVision('');
             setSelectedDate(undefined);
+            setError('');
           }}
           className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted"
         >
@@ -68,7 +101,8 @@ export default function BookingForm() {
   return (
     <div className="rounded-[2.5rem] bg-white p-8 border border-slate-100 shadow-xl shadow-slate-100/30 sm:p-10">
       <form onSubmit={handleSubmit} className="space-y-8">
-        
+        <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+
         {/* Name and Email */}
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="space-y-2">
@@ -77,6 +111,7 @@ export default function BookingForm() {
             </label>
             <input
               id="name"
+              name="name"
               type="text"
               required
               value={name}
@@ -91,6 +126,7 @@ export default function BookingForm() {
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               required
               value={email}
@@ -109,6 +145,7 @@ export default function BookingForm() {
             </label>
             <select
               id="shootType"
+              name="type_of_shoot"
               value={shootType}
               onChange={(e) => setShootType(e.target.value)}
               className="w-full rounded-2xl border border-slate-200 bg-[#faf8f5] px-4 py-3.5 text-sm text-primary outline-none transition focus:border-primary focus:bg-white"
@@ -119,13 +156,14 @@ export default function BookingForm() {
               <option>Commercial / Branding</option>
             </select>
           </div>
-          
+
           <div className="space-y-2">
             <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-primary">
               Vision & details
             </label>
             <textarea
               id="message"
+              name="message"
               rows={4}
               value={vision}
               onChange={(e) => setVision(e.target.value)}
@@ -141,7 +179,7 @@ export default function BookingForm() {
             <CalendarIcon className="h-4 w-4 text-slate-400" />
             <span>Select Preferred Date</span>
           </div>
-          
+
           <div className="flex justify-center bg-white p-4 rounded-2xl border border-slate-100 shadow-sm max-w-sm mx-auto overflow-x-auto">
             <DayPicker
               mode="single"
@@ -162,6 +200,10 @@ export default function BookingForm() {
             </p>
           )}
         </div>
+
+        {error && (
+          <p className="text-center text-xs font-medium text-rose-500">{error}</p>
+        )}
 
         {/* Submit */}
         <button

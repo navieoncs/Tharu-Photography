@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import BookSessionButton from '@/components/BookSessionButton';
 
 export default function Footer() {
   return (
@@ -62,6 +63,9 @@ export default function Footer() {
               <li>
                 <Link href="/frames" className="transition hover:text-primary">Frames</Link>
               </li>
+              <li>
+                <BookSessionButton className="transition hover:text-primary" />
+              </li>
             </ul>
           </div>
 
@@ -98,7 +102,7 @@ export default function Footer() {
         <div className="mt-16 border-t border-slate-200/60 pt-8 flex flex-col items-center justify-between gap-4 text-xs text-muted sm:flex-row">
           <p>© {new Date().getFullYear()} Tharu Photography. All rights reserved.</p>
           <p className="flex items-center gap-4">
-            <Link href="/contact" className="transition hover:text-primary">Book a Session</Link>
+            <BookSessionButton className="transition hover:text-primary" />
           </p>
         </div>
       </div>

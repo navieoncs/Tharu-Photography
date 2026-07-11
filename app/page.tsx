@@ -317,7 +317,7 @@ export default function Home() {
                 <li>• Bespoke fine-art edit style</li>
               </ul>
               <div className="pt-4">
-                <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
+                <Link href="/contact" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
                   Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -336,7 +336,7 @@ export default function Home() {
                 <li>• Professional commercial licensing</li>
               </ul>
               <div className="pt-4">
-                <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
+                <Link href="/contact" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
                   Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -355,7 +355,7 @@ export default function Home() {
                 <li>• Full digital downloads</li>
               </ul>
               <div className="pt-4">
-                <Link href="/services" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
+                <Link href="/contact" className="text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-muted inline-flex items-center gap-1">
                   Inquire details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>

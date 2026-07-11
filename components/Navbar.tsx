@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import BookSessionButton from '@/components/BookSessionButton';
 import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -82,12 +83,9 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Link
-            href="/contact"
+          <BookSessionButton
             className="ml-4 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-200 active:scale-95"
-          >
-            Book Session
-          </Link>
+          />
         </nav>
 
         {/* Mobile menu button */}
@@ -118,13 +116,10 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
+            <BookSessionButton
               onClick={() => setIsOpen(false)}
               className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all hover:bg-slate-800"
-            >
-              Book Session
-            </Link>
+            />
           </nav>
         </div>
       )}
