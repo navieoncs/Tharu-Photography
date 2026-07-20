@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import { Calendar as CalendarIcon, CheckCircle2, ChevronRight, Loader2 } from 'lucide-react';
 import 'react-day-picker/dist/style.css';
 
-const FORMSUBMIT_URL = 'https://formsubmit.co/o.k.dtharushalakshan@gmail.com';
+const WHATSAPP_NUMBER = '94715327267';
 
 export default function BookingForm() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
@@ -29,33 +29,22 @@ export default function BookingForm() {
 
     setIsSubmitting(true);
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('type_of_shoot', shootType);
-    formData.append('message', vision || 'No additional details provided.');
-    formData.append('preferred_date', format(selectedDate, 'PPP'));
-    formData.append('_subject', 'New Booking Inquiry - Tharu Photography');
-    formData.append('_replyto', email);
-    formData.append('_template', 'table');
-    formData.append('_captcha', 'false');
-
     try {
-      const response = await fetch(FORMSUBMIT_URL, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
-      });
+      const message = [
+        'New Booking Inquiry',
+        '',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Shoot Type: ${shootType}`,
+        `Preferred Date: ${format(selectedDate, 'PPP')}`,
+        `Details: ${vision || 'No additional details provided.'}`,
+      ].join('\n');
 
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        setError('Something went wrong. Please try again or contact us directly.');
-      }
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      setIsSubmitted(true);
     } catch {
-      setError('Unable to send your inquiry. Please check your connection or email us directly.');
+      setError('Unable to open WhatsApp. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }

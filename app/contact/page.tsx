@@ -40,7 +40,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Phone Number</span>
-                    <a href="tel:+94771234567" className="font-semibold text-primary transition hover:text-muted">+94 71 532 7267</a>
+                    <a href="tel:+94715327267" className="font-semibold text-primary transition hover:text-muted">+94 71 532 7267</a>
                   </div>
                 </li>
                 
