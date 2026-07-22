@@ -17,7 +17,7 @@ export default function Home() {
     {
       title: 'Golden Union',
       category: 'Wedding',
-      image: '/images/wedding2.jpg',
+      image: '/images/wedding.jpeg',
       description: 'Vows shared as the sky melted into hues of amber and rose.'
     },
     {
@@ -85,11 +85,11 @@ export default function Home() {
     const heroImages = gsap.utils.toArray('.hero-image-wrapper');
     tl.fromTo(heroImages,
       { opacity: 0, y: 50, scale: 1.12 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        scale: 1, 
-        duration: 1.4, 
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.4,
         stagger: 0.15,
         onComplete: () => {
           // Clear transform on completion to allow CSS hover effects to work smoothly
@@ -152,32 +152,32 @@ export default function Home() {
       <div className="absolute top-[60%] right-[-10%] w-[40rem] h-[40rem] rounded-full bg-amber-50/30 blur-3xl -z-10 pointer-events-none" />
 
       {/* 1. HERO SECTION: Editorial split or layered screen */}
-      <section ref={heroSectionRef} className="relative overflow-hidden bg-white pt-4 pb-12 lg:pt-6 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section ref={heroSectionRef} className="relative overflow-hidden bg-white pt-4 pb-10 sm:pb-12 lg:pt-6 lg:pb-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Text details */}
-            <div className="space-y-6 lg:max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-muted">
+            <div className="space-y-5 sm:space-y-6 lg:max-w-2xl">
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted sm:text-xs sm:tracking-[0.3em]">
                 <span className="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
                 Editorial & Fine-art
               </span>
-              <h1 ref={headingRef} className="font-serif text-5xl font-light leading-[1.15] text-primary sm:text-6xl lg:text-7xl">
-                Capturing <br/>
+              <h1 ref={headingRef} className="font-serif text-4xl font-light leading-[1.15] text-primary sm:text-5xl md:text-6xl lg:text-7xl">
+                Capturing <br />
                 <span className="font-normal italic">pure emotion</span> in quiet elegance.
               </h1>
-              <p ref={subtitleRef} className="max-w-xl text-base leading-8 text-muted sm:text-lg">
+              <p ref={subtitleRef} className="max-w-xl text-sm leading-7 text-muted sm:text-base sm:leading-8 md:text-lg">
                 Tharu Photography crafts timeless visual narratives that balance natural light, organic texture, and editorial poise for clients who value artistic detail.
               </p>
-              <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
+              <div ref={ctaRef} className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:pt-4">
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all hover:bg-slate-800"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-all hover:bg-slate-800 sm:w-auto sm:px-7 sm:text-xs sm:tracking-[0.2em]"
                 >
                   Explore Work <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-all hover:bg-slate-50"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary transition-all hover:bg-slate-50 sm:w-auto sm:px-7 sm:text-xs sm:tracking-[0.2em]"
                 >
                   Inquire Now
                 </Link>
@@ -225,22 +225,22 @@ export default function Home() {
 
       {/* 2. STATS & KEY PILLARS */}
       <ScrollReveal y={40} triggerHook="top 85%">
-        <section className="bg-[#faf8f5] py-16 border-t border-b border-slate-100">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-3xl bg-white p-8 shadow-sm">
+        <section className="bg-[#faf8f5] py-12 sm:py-16 border-t border-b border-slate-100">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-4 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-sm">
                 <h3 className="font-serif text-lg font-medium text-primary">Uncompromising Detail</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   High-fidelity capture using premium medium-format lenses for deep textures and natural tonalities.
                 </p>
               </div>
-              <div className="rounded-3xl bg-white p-8 shadow-sm">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-sm">
                 <h3 className="font-serif text-lg font-medium text-primary">Genuine Connection</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   Creating an environment of absolute comfort where laughter, quiet glances, and pure feelings emerge organically.
                 </p>
               </div>
-              <div className="rounded-3xl bg-white p-8 shadow-sm sm:col-span-2 lg:col-span-1">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-sm sm:col-span-2 lg:col-span-1">
                 <h3 className="font-serif text-lg font-medium text-primary">Editorial Polish</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   Tailored styling guides, light coaching, and bespoke curation that elevate every image to magazine standards.
@@ -252,13 +252,13 @@ export default function Home() {
       </ScrollReveal>
 
       {/* 3. FEATURED WORK SHOWCASE */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal y={30} triggerHook="top 85%">
             <div className="flex flex-col items-start justify-between gap-4 border-b border-slate-100 pb-8 md:flex-row md:items-end">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">A curated edit</span>
-                <h2 className="mt-2 font-serif text-3xl font-light text-primary sm:text-4xl">Featured Stories</h2>
+                <h2 className="mt-2 font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Featured Stories</h2>
               </div>
               <Link
                 href="/portfolio"
@@ -269,10 +269,10 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-12 grid gap-10 md:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-10 grid gap-8 sm:mt-12 sm:gap-10 md:grid-cols-3">
             {featuredWorks.map((work, idx) => (
               <article key={idx} className="group relative flex flex-col items-start">
-                <div className="featured-img-container aspect-[3/4] w-full overflow-hidden rounded-[2.5rem] bg-slate-100">
+                <div className="featured-img-container aspect-[3/4] w-full overflow-hidden rounded-[1.75rem] bg-slate-100 sm:rounded-[2.5rem]">
                   <img
                     src={work.image}
                     alt={work.title}
@@ -293,19 +293,19 @@ export default function Home() {
       </section>
 
       {/* 4. THE SERVICE EXPERIENCE */}
-      <section className="bg-[#faf8f5] py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-[#faf8f5] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal y={30} triggerHook="top 85%" className="mx-auto max-w-3xl text-center space-y-4">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Offerings</span>
-            <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Services Tailored for You</h2>
+            <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Services Tailored for You</h2>
             <p className="text-base text-muted leading-relaxed">
               Whether documenting a grand wedding elopement, capturing editorial branding portraiture, or preserving family legacies, we bring clean composition and elevated aesthetics.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Card 1 */}
-            <div className="rounded-[2.5rem] bg-white p-10 border border-slate-100 shadow-sm space-y-6">
+            <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm space-y-5 sm:space-y-6">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Classic</span>
               <h3 className="font-serif text-2xl font-light text-primary">Weddings & Elopements</h3>
               <p className="text-sm leading-relaxed text-muted">
@@ -324,7 +324,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="rounded-[2.5rem] bg-white p-10 border border-slate-100 shadow-sm space-y-6">
+            <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm space-y-5 sm:space-y-6">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Editorial</span>
               <h3 className="font-serif text-2xl font-light text-primary">Portraits & Branding</h3>
               <p className="text-sm leading-relaxed text-muted">
@@ -343,7 +343,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="rounded-[2.5rem] bg-white p-10 border border-slate-100 shadow-sm space-y-6 md:col-span-2 lg:col-span-1">
+            <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm space-y-5 sm:space-y-6 md:col-span-2 lg:col-span-1">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Milestones</span>
               <h3 className="font-serif text-2xl font-light text-primary">Events & Birthdays</h3>
               <p className="text-sm leading-relaxed text-muted">
@@ -365,12 +365,12 @@ export default function Home() {
       </section>
 
       {/* 5. TESTIMONIALS */}
-      <section className="bg-white py-24 border-b border-slate-100">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-10 sm:gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="space-y-4">
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Kind words</span>
-              <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Client Love</h2>
+              <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Client Love</h2>
               <p className="text-sm leading-relaxed text-muted">
                 Feedback from clients who trusted us with their core visual memories and editorial portraits.
               </p>
@@ -382,7 +382,7 @@ export default function Home() {
             </div>
             <div className="grid gap-8 sm:grid-cols-2">
               {testimonials.map((test, idx) => (
-                <div key={idx} className="rounded-3xl bg-[#faf8f5] p-8 space-y-4">
+                <div key={idx} className="rounded-3xl bg-[#faf8f5] p-6 sm:p-8 space-y-4">
                   <p className="text-sm italic leading-relaxed text-primary">"{test.quote}"</p>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.1em] text-primary">{test.author}</p>
@@ -396,22 +396,22 @@ export default function Home() {
       </section>
 
       {/* 6. CALL TO ACTION BOOKING INQUIRY */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <ScrollReveal y={50} triggerHook="top 85%" className="rounded-[3rem] bg-primary px-8 py-16 text-center text-white shadow-2xl md:px-12 md:py-20">
-            <div className="mx-auto max-w-2xl space-y-6">
-              <span className="text-xs font-semibold uppercase tracking-[0.32em] text-slate-300">Reserve your date</span>
-              <h2 className="font-serif text-4xl font-light leading-tight sm:text-5xl">
+      <section className="bg-white py-12 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal y={50} triggerHook="top 85%" className="rounded-[2rem] sm:rounded-[3rem] bg-primary px-5 py-12 text-center text-white shadow-2xl sm:px-8 sm:py-16 md:px-12 md:py-20">
+            <div className="mx-auto max-w-2xl space-y-5 sm:space-y-6">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-300 sm:text-xs sm:tracking-[0.32em]">Reserve your date</span>
+              <h2 className="font-serif text-3xl font-light leading-tight sm:text-4xl md:text-5xl">
                 Ready to create <br className="sm:hidden" />
                 <span className="italic font-normal text-slate-200">something beautiful?</span>
               </h2>
               <p className="text-sm leading-relaxed text-slate-300">
                 Spaces are limited as we only photograph a select number of weddings and portraits per season to guarantee exceptional artistic quality.
               </p>
-              <div className="pt-4">
+              <div className="pt-2 sm:pt-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-primary transition hover:bg-slate-100 active:scale-95"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-primary transition hover:bg-slate-100 active:scale-95 sm:px-8 sm:text-xs sm:tracking-[0.2em]"
                 >
                   Start Booking Inquiry <Calendar className="h-4 w-4" />
                 </Link>

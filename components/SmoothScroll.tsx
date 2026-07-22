@@ -15,18 +15,20 @@ export default function SmoothScroll() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
-    // Initialize Lenis smooth scroll
+    // Initialize Lenis smooth scroll (wrapper: false keeps native sticky/fixed working)
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easeOutExpo
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
+      // Prevent Lenis from transforming a wrapper that breaks fixed headers
+      autoRaf: false,
     });
-    
+
     setLenisInst(lenis);
 
-    // Connect Lenis scroll updates to GSAP ScrollTrigger
+    // Keep fixed navbar usable while Lenis is active
     lenis.on("scroll", ScrollTrigger.update);
 
     // Sync GSAP ticker with Lenis

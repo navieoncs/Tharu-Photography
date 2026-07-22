@@ -4,13 +4,17 @@ import BookSessionButton from '@/components/BookSessionButton';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-100 bg-[#faf8f5] py-16 text-primary">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <footer className="border-t border-slate-100 bg-[#faf8f5] pt-12 pb-0 text-primary sm:pt-16 sm:pb-0">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center">
-              <img src="/images/logo.png" alt="Tharu Photography" className="h-9 w-auto object-contain scale-[2.25] origin-left" />
+            <Link href="/" className="flex items-center" aria-label="Tharu Photography home">
+              <img
+                src="/images/logo.png"
+                alt="Tharu Photography"
+                className="h-9 w-auto object-contain scale-[2.25] origin-left"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-muted max-w-xs">
               Capturing pure emotion, editorial portraits, and fine-art lifestyle photography with quiet elegance.
@@ -58,10 +62,13 @@ export default function Footer() {
                 <Link href="/services" className="transition hover:text-primary">Services & Pricing</Link>
               </li>
               <li>
-                <Link href="/about" className="transition hover:text-primary">About</Link>
+                <Link href="/drone" className="transition hover:text-primary">Dronography</Link>
               </li>
               <li>
                 <Link href="/frames" className="transition hover:text-primary">Frames</Link>
+              </li>
+              <li>
+                <Link href="/about" className="transition hover:text-primary">About</Link>
               </li>
               <li>
                 <BookSessionButton className="transition hover:text-primary" />
@@ -105,6 +112,19 @@ export default function Footer() {
             <BookSessionButton className="transition hover:text-primary" />
           </p>
         </div>
+      </div>
+
+      <div className="mt-10 border-t border-slate-200/60 bg-black px-4 py-4 text-center text-xs text-white/80 sm:px-6 lg:px-8">
+        Designed and developed by{' '}
+        <a
+          href="https://lacedra.lk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold underline-offset-4 transition hover:opacity-90 hover:underline"
+        >
+          <span style={{ color: '#ffbf00' }}>LA&apos;</span>
+          <span className="text-white">CEDRA</span>
+        </a>
       </div>
     </footer>
   );

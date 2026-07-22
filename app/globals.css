@@ -9,23 +9,59 @@
   color: #111827;
 }
 
-html, body {
+html {
   min-height: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Do NOT set overflow-x:hidden here — it breaks sticky/fixed nav in browsers */
+}
+
+html,
+body {
+  max-width: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
   background: #faf8f5;
   color: #111827;
+  /* clip avoids horizontal scroll without killing position:fixed/sticky */
+  overflow-x: clip;
 }
 
 * {
   box-sizing: border-box;
 }
 
-button, input, textarea, select {
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Brand logo uses intentional scale — don't cap its width */
+img[alt="Tharu Photography"] {
+  max-width: none;
+}
+
+button,
+input,
+textarea,
+select {
   font: inherit;
+  max-width: 100%;
+}
+
+/* Prevent long emails/URLs from overflowing on small screens */
+a,
+p,
+li {
+  overflow-wrap: break-word;
 }
 
 ::selection {
@@ -33,29 +69,82 @@ button, input, textarea, select {
   color: #faf8f5;
 }
 
+/* Touch-friendly focus for interactive controls */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role='button'] {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Container padding utility used site-wide when needed */
+@layer utilities {
+  .page-pad {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-y {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+}
+
+/* React DayPicker — scale down on narrow screens */
 .day-picker {
   border-radius: 1rem;
   border: 1px solid #e5e7eb;
   box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+  margin: 0 auto;
 }
 
 .day-picker__month {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .day-picker__caption {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .day-picker__day {
-  width: 2.8rem;
-  height: 2.8rem;
-  line-height: 2.8rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
   border-radius: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .day-picker__day {
+    width: 2.8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+  }
 }
 
 .day-picker__day--selected,
 .day-picker__day:hover {
   background-color: #111827;
   color: white;
+}
+
+/* react-day-picker v8/v9 root table */
+.rdp,
+.rdp-root {
+  --rdp-cell-size: 2.25rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+@media (min-width: 480px) {
+  .rdp,
+  .rdp-root {
+    --rdp-cell-size: 2.6rem;
+  }
+}
+
+/* Safe-area padding for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
 }

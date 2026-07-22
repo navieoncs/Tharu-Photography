@@ -109,13 +109,13 @@ export default function Services() {
   }, { scope: heroSectionRef });
 
   return (
-    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-white pt-4 pb-12 sm:pt-10 sm:pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Intro Header */}
         <div ref={heroSectionRef} className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Services & Investment</span>
-          <h1 ref={headingRef} className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl opacity-0 translate-y-[60px]">
+          <h1 ref={headingRef} className="font-serif text-3xl font-light text-primary sm:text-5xl lg:text-6xl opacity-0 translate-y-[60px]">
             Investment in Art
           </h1>
           <p ref={subtitleRef} className="mx-auto max-w-xl text-sm leading-relaxed text-muted opacity-0 translate-y-[25px]">
@@ -124,11 +124,11 @@ export default function Services() {
         </div>
 
         {/* Services Categories Grid */}
-        <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-10 grid gap-5 sm:mt-16 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((svc, idx) => (
             <div
               key={idx}
-              className="relative flex flex-col justify-between rounded-[2.5rem] bg-white p-8 border border-slate-100 shadow-sm hover:border-slate-300 transition-all duration-300"
+              className="relative flex flex-col justify-between rounded-[1.75rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-8 border border-slate-100 shadow-sm hover:border-slate-300 transition-all duration-300"
             >
               <div className="space-y-6">
                 <div>
@@ -183,16 +183,16 @@ export default function Services() {
         </ScrollReveal>
 
         {/* ROADMAP SECTION: How It Works */}
-        <div className="mt-28 border-t border-slate-100 pt-20">
+        <div className="mt-16 sm:mt-28 border-t border-slate-100 pt-12 sm:pt-20">
           <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">The Experience</span>
-            <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Your Journey with Us</h2>
+            <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Your Journey with Us</h2>
             <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
               We design a smooth, premium experience from the first click to the final gallery delivery.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-16 grid gap-8 md:grid-cols-5">
+          <ScrollReveal stagger={0.12} triggerHook="top 80%" className="mt-10 grid gap-4 sm:mt-16 sm:gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {[
               { num: '01', title: 'Inquire', text: 'Select service type, pick your preferred date, and share your vision in our secure calendar form.' },
               { num: '02', title: 'Consult', text: 'We connect to refine styling guidelines, decide location backdrops, and outline the timeline.' },
@@ -210,37 +210,37 @@ export default function Services() {
         </div>
 
         {/* FAQ ACCORDION */}
-        <div className="mt-28 max-w-4xl mx-auto border-t border-slate-100 pt-20">
-          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-12">
+        <div className="mt-16 sm:mt-28 max-w-4xl mx-auto border-t border-slate-100 pt-12 sm:pt-20">
+          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-8 sm:mb-12">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">FAQ</span>
-            <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Common Questions</h2>
+            <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Common Questions</h2>
           </ScrollReveal>
 
-          <ScrollReveal stagger={0.1} triggerHook="top 85%" className="space-y-4">
+          <ScrollReveal stagger={0.1} triggerHook="top 85%" className="space-y-3 sm:space-y-4">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
                 <div
                   key={idx}
-                  className="rounded-3xl border border-slate-100 bg-[#faf8f5] overflow-hidden transition-all duration-300"
+                  className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-[#faf8f5] overflow-hidden transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="flex w-full items-center justify-between px-6 py-5 text-left font-serif text-base font-medium text-primary hover:text-muted focus:outline-none"
+                    className="flex w-full items-start sm:items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-5 text-left font-serif text-sm sm:text-base font-medium text-primary hover:text-muted focus:outline-none"
                   >
-                    <span>{faq.question}</span>
+                    <span className="pr-2">{faq.question}</span>
                     <ChevronDown
-                      className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${
+                      className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 ${
                         isOpen ? 'rotate-180 text-primary' : ''
                       }`}
                     />
                   </button>
                   <div
                     className={`transition-all duration-300 overflow-hidden ${
-                      isOpen ? 'max-h-60 border-t border-slate-200/50' : 'max-h-0'
+                      isOpen ? 'max-h-[28rem] border-t border-slate-200/50' : 'max-h-0'
                     }`}
                   >
-                    <div className="p-6 text-sm leading-relaxed text-muted bg-white">
+                    <div className="p-4 sm:p-6 text-sm leading-relaxed text-muted bg-white">
                       {faq.answer}
                     </div>
                   </div>
@@ -251,15 +251,15 @@ export default function Services() {
         </div>
 
         {/* CTA Banner */}
-        <ScrollReveal y={40} triggerHook="top 85%" className="mt-28 rounded-[3rem] bg-[#111827] px-8 py-12 text-center text-white md:px-12 md:py-16">
-          <h2 className="font-serif text-3xl font-light leading-tight sm:text-4xl">Have a unique project in mind?</h2>
+        <ScrollReveal y={40} triggerHook="top 85%" className="mt-16 sm:mt-28 rounded-[2rem] sm:rounded-[3rem] bg-[#111827] px-5 py-10 text-center text-white sm:px-8 sm:py-12 md:px-12 md:py-16">
+          <h2 className="font-serif text-2xl font-light leading-tight sm:text-3xl md:text-4xl">Have a unique project in mind?</h2>
           <p className="mt-3 text-sm text-slate-300 max-w-lg mx-auto">
             We love crafting custom sessions. Let us know what you want to build and we will send a tailored estimate.
           </p>
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary transition hover:bg-slate-50"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary transition hover:bg-slate-50"
             >
               Get Custom Quote <ArrowRight className="h-4 w-4" />
             </Link>

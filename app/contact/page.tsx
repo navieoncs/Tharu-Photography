@@ -6,59 +6,59 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Contact() {
   return (
-    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-white pt-4 pb-12 sm:pt-10 sm:pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
         <ScrollReveal y={30} triggerHook="top 85%" className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Inquire</span>
-          <h1 className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-3xl font-light text-primary sm:text-5xl lg:text-6xl">
             Book a Session
           </h1>
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted">
-            Have an event date in mind or want to organize a branding portrait session? Let's begin the planning conversation.
+            Have an event date in mind or want to organize a branding portrait session? Let&apos;s begin the planning conversation.
           </p>
         </ScrollReveal>
 
         {/* Form and details grid */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mt-10 grid gap-8 sm:mt-16 sm:gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           
           {/* Details Column */}
-          <ScrollReveal y={40} stagger={0.15} triggerHook="top 80%" className="space-y-8">
+          <ScrollReveal y={40} stagger={0.15} triggerHook="top 80%" className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             
             {/* Quick Contact Card */}
-            <div className="rounded-[2.5rem] bg-[#faf8f5] p-8 border border-slate-100 space-y-6">
+            <div className="rounded-[1.75rem] sm:rounded-[2.5rem] bg-[#faf8f5] p-5 sm:p-8 border border-slate-100 space-y-5 sm:space-y-6">
               <h3 className="font-serif text-xl font-medium text-primary">Contact Details</h3>
               <p className="text-xs text-muted leading-relaxed">
                 If you prefer direct emails or phone calls, please reach out below. We look forward to coordinating with you.
               </p>
               
               <ul className="space-y-4 text-xs text-muted">
-                <li className="flex items-center gap-3">
-                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary">
+                <li className="flex items-start gap-3">
+                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary shrink-0">
                     <Phone className="h-4 w-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Phone Number</span>
-                    <a href="tel:+94715327267" className="font-semibold text-primary transition hover:text-muted">+94 71 532 7267</a>
+                    <a href="tel:+94715327267" className="font-semibold text-primary transition hover:text-muted break-all">+94 71 532 7267</a>
                   </div>
                 </li>
                 
-                <li className="flex items-center gap-3">
-                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary">
+                <li className="flex items-start gap-3">
+                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary shrink-0">
                     <Mail className="h-4 w-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Email Inquiry</span>
-                    <a href="mailto:o.k.dtharushalakshan@gmail.com" className="font-semibold text-primary transition hover:text-muted">o.k.dtharushalakshan@gmail.com</a>
+                    <a href="mailto:o.k.dtharushalakshan@gmail.com" className="font-semibold text-primary transition hover:text-muted break-all">o.k.dtharushalakshan@gmail.com</a>
                   </div>
                 </li>
 
-                <li className="flex items-center gap-3">
-                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary">
+                <li className="flex items-start gap-3">
+                  <div className="rounded-xl bg-white p-2.5 shadow-sm text-primary shrink-0">
                     <Clock className="h-4 w-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] block uppercase tracking-wider text-slate-400">Inquiry Hours</span>
                     <span className="font-semibold text-primary">Monday – Sunday, 9:00 AM – 10:00 PM</span>
                   </div>
@@ -99,9 +99,9 @@ export default function Contact() {
             </div>
 
             {/* Travel Coverage details */}
-            <div className="rounded-[2.5rem] bg-[#faf8f5] p-8 border border-slate-100 space-y-4">
+            <div className="rounded-[1.75rem] sm:rounded-[2.5rem] bg-[#faf8f5] p-5 sm:p-8 border border-slate-100 space-y-4">
               <div className="flex items-center gap-2 text-primary font-serif text-lg font-medium">
-                <Compass className="h-5 w-5 text-slate-500" />
+                <Compass className="h-5 w-5 text-slate-500 shrink-0" />
                 <span>Travel & Coverage Area</span>
               </div>
               <p className="text-xs leading-relaxed text-muted">
@@ -111,8 +111,8 @@ export default function Contact() {
 
           </ScrollReveal>
 
-          {/* Form Column */}
-          <ScrollReveal y={40} delay={0.2} triggerHook="top 80%">
+          {/* Form Column — first on mobile for conversion */}
+          <ScrollReveal y={40} delay={0.2} triggerHook="top 80%" className="order-1 lg:order-2">
             <BookingForm />
           </ScrollReveal>
 

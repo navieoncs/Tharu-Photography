@@ -52,7 +52,7 @@ export default function BookingForm() {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-[2.5rem] bg-white p-12 text-center border border-slate-100 shadow-xl shadow-slate-100/50 animate-fade-in space-y-6">
+      <div className="flex flex-col items-center justify-center rounded-[1.75rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-12 text-center border border-slate-100 shadow-xl shadow-slate-100/50 animate-fade-in space-y-6">
         <div className="rounded-full bg-emerald-50 p-4 text-emerald-500">
           <CheckCircle2 className="h-12 w-12 animate-pulse" />
         </div>
@@ -88,8 +88,8 @@ export default function BookingForm() {
   }
 
   return (
-    <div className="rounded-[2.5rem] bg-white p-8 border border-slate-100 shadow-xl shadow-slate-100/30 sm:p-10">
-      <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="rounded-[1.75rem] sm:rounded-[2.5rem] bg-white p-5 border border-slate-100 shadow-xl shadow-slate-100/30 sm:p-8 md:p-10">
+      <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
         <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
         {/* Name and Email */}
@@ -143,6 +143,7 @@ export default function BookingForm() {
               <option>Wedding / Elopement</option>
               <option>Events / Milestones</option>
               <option>Commercial / Branding</option>
+              <option>Dronography / Aerial</option>
             </select>
           </div>
 
@@ -163,19 +164,19 @@ export default function BookingForm() {
         </div>
 
         {/* Date Selector Container */}
-        <div className="rounded-3xl border border-slate-100 bg-[#faf8f5] p-6 space-y-4">
+        <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-[#faf8f5] p-4 sm:p-6 space-y-4">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
-            <CalendarIcon className="h-4 w-4 text-slate-400" />
+            <CalendarIcon className="h-4 w-4 text-slate-400 shrink-0" />
             <span>Select Preferred Date</span>
           </div>
 
-          <div className="flex justify-center bg-white p-4 rounded-2xl border border-slate-100 shadow-sm max-w-sm mx-auto overflow-x-auto">
+          <div className="flex justify-center bg-white p-2 sm:p-4 rounded-2xl border border-slate-100 shadow-sm w-full max-w-full mx-auto overflow-x-auto">
             <DayPicker
               mode="single"
               selected={selectedDate}
               onSelect={setSelectedDate}
               disabled={{ before: new Date() }}
-              className="day-picker"
+              className="day-picker !m-0"
             />
           </div>
 

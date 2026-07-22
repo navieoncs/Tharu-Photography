@@ -85,13 +85,13 @@ export default function About() {
   });
 
   return (
-    <div className="bg-white pt-6 pb-16 sm:pt-10 sm:pb-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-white pt-4 pb-12 sm:pt-10 sm:pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
         <div ref={heroSectionRef} className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">The Story</span>
-          <h1 ref={headingRef} className="font-serif text-4xl font-light text-primary sm:text-5xl lg:text-6xl opacity-0 translate-y-[60px]">
+          <h1 ref={headingRef} className="font-serif text-3xl font-light text-primary sm:text-5xl lg:text-6xl opacity-0 translate-y-[60px]">
             Behind the Lens
           </h1>
           <p ref={subtitleRef} className="mx-auto max-w-xl text-sm leading-relaxed text-muted opacity-0 translate-y-[25px]">
@@ -100,14 +100,14 @@ export default function About() {
         </div>
 
         {/* Bio & Intro Grid */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="mt-10 grid gap-8 sm:mt-16 sm:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           {/* Portrait Image frame with parallax */}
-          <div ref={photoRef} className="relative overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-xl shadow-slate-100/50 aspect-[4/5] opacity-0 translate-y-[50px] scale-[1.12]">
+          <div ref={photoRef} className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.5rem] bg-slate-100 shadow-xl shadow-slate-100/50 aspect-[4/5] max-h-[70vh] sm:max-h-none opacity-0 translate-y-[50px] scale-[1.12]">
             <ParallaxWrapper speed={10} className="h-full w-full">
               <img
                 src="/images/tharu.jpg"
                 alt="Tharu Portrait"
-                className="h-[120%] w-[120%] -translate-y-[10%] object-cover transition duration-700 hover:scale-[1.02]"
+                className="h-[120%] w-[120%] max-w-none -translate-y-[10%] object-cover transition duration-700 hover:scale-[1.02]"
               />
             </ParallaxWrapper>
           </div>
@@ -138,15 +138,15 @@ export default function About() {
         </div>
 
         {/* Pillars / Philosophy Grid */}
-        <div className="mt-28 border-t border-slate-100 pt-20">
-          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-16">
+        <div className="mt-16 sm:mt-28 border-t border-slate-100 pt-12 sm:pt-20">
+          <ScrollReveal y={30} triggerHook="top 85%" className="text-center space-y-3 mb-10 sm:mb-16">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Our Core Pillars</span>
-            <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Creative Philosophy</h2>
+            <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Creative Philosophy</h2>
           </ScrollReveal>
 
-          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-10 md:grid-cols-3">
+          <ScrollReveal stagger={0.15} triggerHook="top 80%" className="grid gap-6 sm:gap-10 md:grid-cols-3">
             {pillars.map((pillar, idx) => (
-              <div key={idx} className="rounded-3xl bg-[#faf8f5] p-8 border border-slate-100 space-y-4">
+              <div key={idx} className="rounded-3xl bg-[#faf8f5] p-6 sm:p-8 border border-slate-100 space-y-4">
                 <div className="rounded-2xl bg-white p-3.5 w-fit shadow-sm">
                   {pillar.icon}
                 </div>
@@ -158,11 +158,11 @@ export default function About() {
         </div>
 
         {/* Gear and technical details */}
-        <ScrollReveal y={40} triggerHook="top 80%" className="mt-28 border-t border-slate-100 pt-20">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <ScrollReveal y={40} triggerHook="top 80%" className="mt-16 sm:mt-28 border-t border-slate-100 pt-12 sm:pt-20">
+          <div className="grid gap-8 sm:gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Technical Details</span>
-              <h2 className="mt-2 font-serif text-3xl font-light text-primary sm:text-4xl">The Equipment</h2>
+              <h2 className="mt-2 font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">The Equipment</h2>
               <p className="mt-4 text-xs leading-relaxed text-muted max-w-sm">
                 We believe that equipment should empower creativity, not define it. We select top-tier full-frame and medium-format bodies coupled with ultra-wide aperture prime lenses to ensure unmatched detail, texture rendering, and dynamic range in all lighting situations.
               </p>
@@ -186,15 +186,15 @@ export default function About() {
         </ScrollReveal>
 
         {/* CTA */}
-        <ScrollReveal y={50} triggerHook="top 85%" className="mt-28 border-t border-slate-100 pt-20 text-center space-y-6">
-          <h2 className="font-serif text-3xl font-light text-primary sm:text-4xl">Let's craft your story together.</h2>
+        <ScrollReveal y={50} triggerHook="top 85%" className="mt-16 sm:mt-28 border-t border-slate-100 pt-12 sm:pt-20 text-center space-y-6">
+          <h2 className="font-serif text-2xl font-light text-primary sm:text-3xl md:text-4xl">Let&apos;s craft your story together.</h2>
           <p className="text-sm text-muted max-w-lg mx-auto leading-relaxed">
             Reach out to share your project dates, style ideas, and locations. We look forward to working with you.
           </p>
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-slate-800"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-slate-800"
             >
               Get In Touch <ArrowRight className="h-4 w-4" />
             </Link>
