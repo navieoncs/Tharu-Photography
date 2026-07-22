@@ -122,7 +122,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="font-semibold underline-offset-4 transition hover:opacity-90 hover:underline"
         >
-          <span style={{ color: '#ffbf00' }}>LA&apos;</span>
+          <span style={{ color: '#ffe600ee' }}>LA&apos;</span>
           <span className="text-white">CEDRA</span>
         </a>
       </div>
