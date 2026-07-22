@@ -1,4 +1,11 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/drone/page": "app/drone/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/about/page": "app/about/page.js",
+  "/portfolio/page": "app/portfolio/page.js",
+  "/frames/page": "app/frames/page.js",
   "/page": "app/page.js",
-  "/icon.png/route": "app/icon.png/route.js"
+  "/icon.png/route": "app/icon.png/route.js",
+  "/services/page": "app/services/page.js"
 }
